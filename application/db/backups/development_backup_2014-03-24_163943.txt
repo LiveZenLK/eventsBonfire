@@ -1,0 +1,118 @@
+#
+# TABLE STRUCTURE FOR: bf_mcr_information
+#
+
+CREATE TABLE `bf_mcr_information` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parentCustomer` varchar(100) NOT NULL,
+  `parentMcr` varchar(200) NOT NULL,
+  `issueDate` date NOT NULL DEFAULT '0000-00-00',
+  `status` varchar(50) NOT NULL,
+  `receivedBy` varchar(200) NOT NULL,
+  `returnDate` date NOT NULL DEFAULT '0000-00-00',
+  `type` varchar(50) NOT NULL,
+  `panasonic_HCV700` varchar(10) NOT NULL,
+  `V700` varchar(200) NOT NULL,
+  `microphone_rode` varchar(10) NOT NULL,
+  `macbook13` varchar(10) NOT NULL,
+  `mac13` varchar(200) NOT NULL,
+  `panasonic_HCV727` varchar(10) NOT NULL,
+  `V727` varchar(200) NOT NULL,
+  `extension_cable` varchar(10) NOT NULL,
+  `macbook15` varchar(10) NOT NULL,
+  `camera_checkbox1` varchar(10) NOT NULL,
+  `camera_value1` varchar(200) NOT NULL,
+  `audio_checkbox1` varchar(10) NOT NULL,
+  `audio_value1` varchar(200) NOT NULL,
+  `recorder_sony_PMW50` varchar(10) NOT NULL,
+  `camera_checkbox2` varchar(10) NOT NULL,
+  `camera_value2` varchar(200) NOT NULL,
+  `audio_checkbox2` varchar(10) NOT NULL,
+  `audio_value2` varchar(200) NOT NULL,
+  `aja_interface` varchar(10) NOT NULL,
+  `camera_checkbox3` varchar(10) NOT NULL,
+  `camera_value3` varchar(200) NOT NULL,
+  `sxs_card_reader` varchar(10) NOT NULL,
+  `liveu` varchar(10) NOT NULL,
+  `thunderbold_SSD_cable` varchar(10) NOT NULL,
+  `SD_card_amount` varchar(10) NOT NULL,
+  `sccard_amount` varchar(200) NOT NULL,
+  `minicaster` varchar(10) NOT NULL,
+  `mac_charger` varchar(10) NOT NULL,
+  `mini_sd_card` varchar(10) NOT NULL,
+  `mini_sd_card_amount` varchar(200) NOT NULL,
+  `newsspotter` varchar(10) NOT NULL,
+  `peripherals_checkbox1` varchar(10) NOT NULL,
+  `peripherals_value1` varchar(200) NOT NULL,
+  `sd_card_adaptor` varchar(10) NOT NULL,
+  `BGAN_explorer` varchar(10) NOT NULL,
+  `peripherals_checkbox2` varchar(10) NOT NULL,
+  `peripherals_value2` varchar(200) NOT NULL,
+  `battery_700_small` varchar(10) NOT NULL,
+  `battery_700_small_amount` varchar(200) NOT NULL,
+  `cullmann_magnesit` varchar(10) NOT NULL,
+  `walkie_talkie` varchar(10) NOT NULL,
+  `battery_700_big` varchar(10) NOT NULL,
+  `battery_700_big_amount` varchar(200) NOT NULL,
+  `cullmann_nanomax` varchar(10) NOT NULL,
+  `first_aid_kit` varchar(10) NOT NULL,
+  `battery_727VWVBT190` varchar(10) NOT NULL,
+  `battery_727VWVBT190_amount` varchar(200) NOT NULL,
+  `tripods_checkbox1` varchar(10) NOT NULL,
+  `backpack` varchar(10) NOT NULL,
+  `battery_727VWVBT380` varchar(10) NOT NULL,
+  `battery_727VWVBT380_amount` varchar(200) NOT NULL,
+  `tripods_checkbox2` varchar(10) NOT NULL,
+  `tripods_value2` varchar(200) NOT NULL,
+  `miscellaneous_checkbox1` varchar(10) NOT NULL,
+  `miscellaneous_value1` varchar(200) NOT NULL,
+  `battery_handycam` varchar(10) NOT NULL,
+  `battery_handycam_amount` varchar(200) NOT NULL,
+  `tripods_checkbox3` varchar(10) NOT NULL,
+  `tripods_value3` varchar(200) NOT NULL,
+  `miscellaneous_checkbox2` varchar(10) NOT NULL,
+  `miscellaneous_value2` varchar(200) NOT NULL,
+  `charger_patona` varchar(10) NOT NULL,
+  `tripods_checkbox4` varchar(10) NOT NULL,
+  `tripods_value4` varchar(200) NOT NULL,
+  `miscellaneous_checkbox3` varchar(10) NOT NULL,
+  `miscellaneous_value3` varchar(200) NOT NULL,
+  `charger_panasonic_VSK0781SND3BMT` varchar(10) NOT NULL,
+  `tripods_checkbox5` varchar(10) NOT NULL,
+  `tripods_value5` varchar(200) NOT NULL,
+  `miscellaneous_checkbox4` varchar(10) NOT NULL,
+  `miscellaneous_value4` varchar(200) NOT NULL,
+  `Battery_small_panasonic` varchar(10) NOT NULL,
+  `batterysmallpanasonic` varchar(200) NOT NULL,
+  `one_cam_charger_panasonic` varchar(10) NOT NULL,
+  `onecamchargerpanasonic` varchar(200) NOT NULL,
+  `one_battery_small_panasonic` varchar(10) NOT NULL,
+  `onebatterysmallpanasonic` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+INSERT INTO bf_mcr_information (`id`, `parentCustomer`, `parentMcr`, `issueDate`, `status`, `receivedBy`, `returnDate`, `type`, `panasonic_HCV700`, `V700`, `microphone_rode`, `macbook13`, `mac13`, `panasonic_HCV727`, `V727`, `extension_cable`, `macbook15`, `camera_checkbox1`, `camera_value1`, `audio_checkbox1`, `audio_value1`, `recorder_sony_PMW50`, `camera_checkbox2`, `camera_value2`, `audio_checkbox2`, `audio_value2`, `aja_interface`, `camera_checkbox3`, `camera_value3`, `sxs_card_reader`, `liveu`, `thunderbold_SSD_cable`, `SD_card_amount`, `sccard_amount`, `minicaster`, `mac_charger`, `mini_sd_card`, `mini_sd_card_amount`, `newsspotter`, `peripherals_checkbox1`, `peripherals_value1`, `sd_card_adaptor`, `BGAN_explorer`, `peripherals_checkbox2`, `peripherals_value2`, `battery_700_small`, `battery_700_small_amount`, `cullmann_magnesit`, `walkie_talkie`, `battery_700_big`, `battery_700_big_amount`, `cullmann_nanomax`, `first_aid_kit`, `battery_727VWVBT190`, `battery_727VWVBT190_amount`, `tripods_checkbox1`, `backpack`, `battery_727VWVBT380`, `battery_727VWVBT380_amount`, `tripods_checkbox2`, `tripods_value2`, `miscellaneous_checkbox1`, `miscellaneous_value1`, `battery_handycam`, `battery_handycam_amount`, `tripods_checkbox3`, `tripods_value3`, `miscellaneous_checkbox2`, `miscellaneous_value2`, `charger_patona`, `tripods_checkbox4`, `tripods_value4`, `miscellaneous_checkbox3`, `miscellaneous_value3`, `charger_panasonic_VSK0781SND3BMT`, `tripods_checkbox5`, `tripods_value5`, `miscellaneous_checkbox4`, `miscellaneous_value4`, `Battery_small_panasonic`, `batterysmallpanasonic`, `one_cam_charger_panasonic`, `onecamchargerpanasonic`, `one_battery_small_panasonic`, `onebatterysmallpanasonic`) VALUES (11, '7', '2', '2014-03-21', 'Issue', '2', '2014-03-24', 'FP03', '0', '', '1', '1', 'C1MKP1PMDV30', '1', 'SN: CR3DA001065', '1', '1', '0', '', '0', '', '1', '0', '', '0', '', '1', '0', '', '1', '1', '1', '1', '', '1', '1', '1', '', '1', '0', '', '0', '1', '0', '', '1', '', '0', '1', '1', '', '1', '1', '1', '', '1', '1', '1', '', '0', '', '0', '', '1', '', '0', '', '0', '', '1', '0', '', '0', '', '1', '0', '', '0', '', '0', '', '0', '', '0', '');
+INSERT INTO bf_mcr_information (`id`, `parentCustomer`, `parentMcr`, `issueDate`, `status`, `receivedBy`, `returnDate`, `type`, `panasonic_HCV700`, `V700`, `microphone_rode`, `macbook13`, `mac13`, `panasonic_HCV727`, `V727`, `extension_cable`, `macbook15`, `camera_checkbox1`, `camera_value1`, `audio_checkbox1`, `audio_value1`, `recorder_sony_PMW50`, `camera_checkbox2`, `camera_value2`, `audio_checkbox2`, `audio_value2`, `aja_interface`, `camera_checkbox3`, `camera_value3`, `sxs_card_reader`, `liveu`, `thunderbold_SSD_cable`, `SD_card_amount`, `sccard_amount`, `minicaster`, `mac_charger`, `mini_sd_card`, `mini_sd_card_amount`, `newsspotter`, `peripherals_checkbox1`, `peripherals_value1`, `sd_card_adaptor`, `BGAN_explorer`, `peripherals_checkbox2`, `peripherals_value2`, `battery_700_small`, `battery_700_small_amount`, `cullmann_magnesit`, `walkie_talkie`, `battery_700_big`, `battery_700_big_amount`, `cullmann_nanomax`, `first_aid_kit`, `battery_727VWVBT190`, `battery_727VWVBT190_amount`, `tripods_checkbox1`, `backpack`, `battery_727VWVBT380`, `battery_727VWVBT380_amount`, `tripods_checkbox2`, `tripods_value2`, `miscellaneous_checkbox1`, `miscellaneous_value1`, `battery_handycam`, `battery_handycam_amount`, `tripods_checkbox3`, `tripods_value3`, `miscellaneous_checkbox2`, `miscellaneous_value2`, `charger_patona`, `tripods_checkbox4`, `tripods_value4`, `miscellaneous_checkbox3`, `miscellaneous_value3`, `charger_panasonic_VSK0781SND3BMT`, `tripods_checkbox5`, `tripods_value5`, `miscellaneous_checkbox4`, `miscellaneous_value4`, `Battery_small_panasonic`, `batterysmallpanasonic`, `one_cam_charger_panasonic`, `onecamchargerpanasonic`, `one_battery_small_panasonic`, `onebatterysmallpanasonic`) VALUES (12, '8', '2', '2014-03-21', 'Return', '2', '2014-03-25', 'FP01', '0', '', '1', '1', 'C1MKP1PMDV30', '1', 'SN: CR3DA001065', '1', '1', '0', '', '0', '', '1', '0', '', '0', '', '1', '0', '', '1', '1', '1', '0', '', '1', '1', '0', '', '1', '0', '', '0', '1', '0', '', '0', '', '0', '1', '0', '', '1', '1', '1', '', '0', '1', '1', '', '0', '', '0', '', '0', '', '0', '', '0', '', '0', '0', '', '0', '', '1', '0', '', '0', '', '0', '', '0', '', '0', '');
+INSERT INTO bf_mcr_information (`id`, `parentCustomer`, `parentMcr`, `issueDate`, `status`, `receivedBy`, `returnDate`, `type`, `panasonic_HCV700`, `V700`, `microphone_rode`, `macbook13`, `mac13`, `panasonic_HCV727`, `V727`, `extension_cable`, `macbook15`, `camera_checkbox1`, `camera_value1`, `audio_checkbox1`, `audio_value1`, `recorder_sony_PMW50`, `camera_checkbox2`, `camera_value2`, `audio_checkbox2`, `audio_value2`, `aja_interface`, `camera_checkbox3`, `camera_value3`, `sxs_card_reader`, `liveu`, `thunderbold_SSD_cable`, `SD_card_amount`, `sccard_amount`, `minicaster`, `mac_charger`, `mini_sd_card`, `mini_sd_card_amount`, `newsspotter`, `peripherals_checkbox1`, `peripherals_value1`, `sd_card_adaptor`, `BGAN_explorer`, `peripherals_checkbox2`, `peripherals_value2`, `battery_700_small`, `battery_700_small_amount`, `cullmann_magnesit`, `walkie_talkie`, `battery_700_big`, `battery_700_big_amount`, `cullmann_nanomax`, `first_aid_kit`, `battery_727VWVBT190`, `battery_727VWVBT190_amount`, `tripods_checkbox1`, `backpack`, `battery_727VWVBT380`, `battery_727VWVBT380_amount`, `tripods_checkbox2`, `tripods_value2`, `miscellaneous_checkbox1`, `miscellaneous_value1`, `battery_handycam`, `battery_handycam_amount`, `tripods_checkbox3`, `tripods_value3`, `miscellaneous_checkbox2`, `miscellaneous_value2`, `charger_patona`, `tripods_checkbox4`, `tripods_value4`, `miscellaneous_checkbox3`, `miscellaneous_value3`, `charger_panasonic_VSK0781SND3BMT`, `tripods_checkbox5`, `tripods_value5`, `miscellaneous_checkbox4`, `miscellaneous_value4`, `Battery_small_panasonic`, `batterysmallpanasonic`, `one_cam_charger_panasonic`, `onecamchargerpanasonic`, `one_battery_small_panasonic`, `onebatterysmallpanasonic`) VALUES (13, '10', '3', '2014-03-22', 'Issue', '3', '2014-03-28', 'FP05', '0', '', '1', '0', '', '1', 'SN: CR3FA001875', '1', '1', '0', '', '0', '', '1', '0', '', '0', '', '1', '0', '', '1', '1', '1', '0', '', '1', '1', '0', '', '1', '0', '', '1', '1', '0', '', '0', '', '0', '1', '0', '', '1', '1', '1', '', '0', '1', '1', '', '0', '', '0', '', '0', '', '0', '', '0', '', '1', '0', '', '0', '', '1', '0', '', '0', '', '0', '', '0', '', '0', '');
+INSERT INTO bf_mcr_information (`id`, `parentCustomer`, `parentMcr`, `issueDate`, `status`, `receivedBy`, `returnDate`, `type`, `panasonic_HCV700`, `V700`, `microphone_rode`, `macbook13`, `mac13`, `panasonic_HCV727`, `V727`, `extension_cable`, `macbook15`, `camera_checkbox1`, `camera_value1`, `audio_checkbox1`, `audio_value1`, `recorder_sony_PMW50`, `camera_checkbox2`, `camera_value2`, `audio_checkbox2`, `audio_value2`, `aja_interface`, `camera_checkbox3`, `camera_value3`, `sxs_card_reader`, `liveu`, `thunderbold_SSD_cable`, `SD_card_amount`, `sccard_amount`, `minicaster`, `mac_charger`, `mini_sd_card`, `mini_sd_card_amount`, `newsspotter`, `peripherals_checkbox1`, `peripherals_value1`, `sd_card_adaptor`, `BGAN_explorer`, `peripherals_checkbox2`, `peripherals_value2`, `battery_700_small`, `battery_700_small_amount`, `cullmann_magnesit`, `walkie_talkie`, `battery_700_big`, `battery_700_big_amount`, `cullmann_nanomax`, `first_aid_kit`, `battery_727VWVBT190`, `battery_727VWVBT190_amount`, `tripods_checkbox1`, `backpack`, `battery_727VWVBT380`, `battery_727VWVBT380_amount`, `tripods_checkbox2`, `tripods_value2`, `miscellaneous_checkbox1`, `miscellaneous_value1`, `battery_handycam`, `battery_handycam_amount`, `tripods_checkbox3`, `tripods_value3`, `miscellaneous_checkbox2`, `miscellaneous_value2`, `charger_patona`, `tripods_checkbox4`, `tripods_value4`, `miscellaneous_checkbox3`, `miscellaneous_value3`, `charger_panasonic_VSK0781SND3BMT`, `tripods_checkbox5`, `tripods_value5`, `miscellaneous_checkbox4`, `miscellaneous_value4`, `Battery_small_panasonic`, `batterysmallpanasonic`, `one_cam_charger_panasonic`, `onecamchargerpanasonic`, `one_battery_small_panasonic`, `onebatterysmallpanasonic`) VALUES (14, '8', '2', '2014-03-22', 'Issue', '2', '2014-03-26', 'FP06', '1', 'SN: J2HL00288', '1', '0', '', '0', '', '1', '1', '0', '', '0', '', '1', '0', '', '0', '', '1', '0', '', '1', '1', '1', '0', '', '1', '1', '0', '', '1', '1', '', '1', '1', '1', '', '0', '', '1', '1', '0', '', '1', '1', '0', '', '1', '1', '0', '', '0', '', '0', '', '0', '', '0', '', '0', '', '0', '0', '', '0', '', '0', '0', '', '0', '', '1', 'SN: SBL5E/S155F', '1', 'SN: L2B1MT', '1', 'SN: SL16A');
+
+
+#
+# TABLE STRUCTURE FOR: bf_mobile
+#
+
+CREATE TABLE `bf_mobile` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `articleDescription` varchar(200) NOT NULL,
+  `serialNumber` varchar(200) NOT NULL,
+  `imeiNumber` varchar(200) NOT NULL,
+  `inventoryNumber` varchar(200) NOT NULL,
+  `customField` varchar(900) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+INSERT INTO bf_mobile (`id`, `articleDescription`, `serialNumber`, `imeiNumber`, `inventoryNumber`, `customField`) VALUES (1, 'Nokia x2-01', '99998877856554455', '44566544', '12345', 'This is nokia x2-01 mobile handset..');
+INSERT INTO bf_mobile (`id`, `articleDescription`, `serialNumber`, `imeiNumber`, `inventoryNumber`, `customField`) VALUES (2, 'Samsung Galaxy Note', '55966958474858584', '47474484', '12345', 'This is samsung galaxy note mobile handset..');
+INSERT INTO bf_mobile (`id`, `articleDescription`, `serialNumber`, `imeiNumber`, `inventoryNumber`, `customField`) VALUES (3, 'Samsung Galaxy Note 2', '66555544444555555', '45445435', '12345', 'this is note 2 mobile from samsung galaxy..');
+
+
