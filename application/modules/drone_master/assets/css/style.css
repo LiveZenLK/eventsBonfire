@@ -1,0 +1,18 @@
+.customTable{
+    margin-top: 20px;
+}
+
+.customTable td{
+    width: 300px;
+    text-align: left;
+}
+.customTable tr{
+	height: 50px;    
+}
+
+.viewtable td{
+	width: 100px;
+}
+.viewtable th{
+	width: 100px;
+}
