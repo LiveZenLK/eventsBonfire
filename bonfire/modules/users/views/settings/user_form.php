@@ -71,7 +71,7 @@ echo form_open($this->uri->uri_string(), 'class="form-horizontal" autocomplete="
     Events::trigger('render_user_form');
     ?>
     <!-- Start of User Meta -->
-    <?php //$this->load->view('users/user_meta');?>
+    <?php $this->load->view('users/user_meta');?>
     <!-- End of User Meta -->
     <?php
     if (isset($user) && has_permission('Permissions.' . ucfirst($user->role_name) . '.Manage')

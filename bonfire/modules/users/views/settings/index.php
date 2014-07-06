@@ -90,7 +90,6 @@ echo form_open();
 				<td class='id'><?php echo $user->id; ?></td>
 				<td><?php
 					echo anchor(site_url(SITE_AREA . '/settings/users/edit/' . $user->id), $user->username);
-
 					if ($user->banned) :
 					?>
 					<span class="label label-warning">Banned</span>

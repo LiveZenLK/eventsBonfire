@@ -58,8 +58,36 @@ $defaultTimezone = isset($current_user) ? $current_user->timezone : strtoupper(s
         </label>
     </div>
 </div>
-<?php endif; ?>
+<?php endif;
 
-
-<input type="hidden" id="language" name="language" value="<?php echo $languages[0];?> " />
- <?php timezone_menu(set_value('timezones', isset($user) ? $user->timezone : $defaultTimezone), $controlClass); ?>
+if (isset($languages) && is_array($languages) && count($languages)) :
+    if(count($languages) == 1):
+?>
+<input type="hidden" id="language" name="language" value="<?php echo $languages[0]; ?>" />
+<?php
+    else :
+?>
+<div class="control-group<?php echo iif(form_error('language'), $errorClass); ?>">
+    <label class="control-label required" for="language"><?php echo lang('bf_language'); ?></label>
+    <div class="controls">
+        <select name="language" id="language" class="chzn-select <?php echo $controlClass; ?>">
+            <?php foreach ($languages as $language) : ?>
+            <option value="<?php e($language); ?>" <?php echo set_select('language', $language, $defaultLanguage == $language ? true : false); ?>>
+                <?php e(ucfirst($language)); ?>
+            </option>
+            <?php endforeach; ?>
+        </select>
+        <span class="help-inline"><?php echo form_error('language'); ?></span>
+    </div>
+</div>
+<?php
+    endif;
+endif;
+?>
+<div class="control-group<?php echo iif(form_error('timezone'), $errorClass); ?>">
+    <label class="control-label required" for="timezones"><?php echo lang('bf_timezone'); ?></label>
+    <div class="controls">
+        <?php echo timezone_menu(set_value('timezones', isset($user) ? $user->timezone : $defaultTimezone), $controlClass); ?>
+        <span class="help-inline"><?php echo form_error('timezones'); ?></span>
+    </div>
+</div>

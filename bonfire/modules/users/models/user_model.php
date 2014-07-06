@@ -115,7 +115,7 @@ class User_model extends BF_Model
         array(
             'field' => 'timezones',
             'label' => 'lang:bf_timezone',
-            'rules' => 'trim|max_length[4]',
+            'rules' => 'required|trim|max_length[4]',
         ),
         array(
             'field' => 'username',
