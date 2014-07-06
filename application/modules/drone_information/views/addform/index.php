@@ -66,7 +66,7 @@ $has_records	= isset($records) && is_array($records) && count($records);
 				<?php if ($can_edit) : ?>
 					<td><?php echo anchor(SITE_AREA . '/addform/drone_information/edit/' . $record->id, '<span class="icon-pencil"></span>' . ucfirst($customers[$record->drone_customer]->name)); ?></td>
 				<?php else : ?>
-					<td><?php echo ucfirst($customers[$record->drone_customer]->name) ?> ?></td>
+					<td><?php echo ucfirst($customers[$record->drone_customer]->name) ?></td>
 				<?php endif; ?>
 					<td><?php e($record->job) ?></td>
 					<td><?php e($record->issueDate) ?></td>

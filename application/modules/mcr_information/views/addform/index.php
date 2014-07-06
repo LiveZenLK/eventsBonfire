@@ -73,7 +73,7 @@ $has_records	= isset($records) && is_array($records) && count($records);
 				<?php if ($can_edit) : ?>
 					<td><?php echo anchor(SITE_AREA . '/addform/mcr_information/edit/' . $record->id, '<span class="icon-pencil"></span>' . $customers[$record->parentCustomer]->name); ?></td>
 				<?php else : ?>
-					<td><?php $customers[$record->parentCustomer]->name; ?></td>
+					<td><?php echo $customers[$record->parentCustomer]->name; ?></td>
 				<?php endif; ?>
 					<td><?php e($record->job) ?></td>
 					<td><?php echo $userslist[$record->parentMcr]->username ?></td>
@@ -85,7 +85,7 @@ $has_records	= isset($records) && is_array($records) && count($records);
 						<td>Not Selected</td>
 						<?php } ?> 
 					<td><?php e($record->returnDate) ?></td>
-					<td><?php e($record->type) ?></td>
+					<td><?php echo $fpsets[$record->type]->setType; ?></td>
                     <td><p><?php echo anchor(SITE_AREA . '/addform/mcr_information/mcr_detail/'. $record->id , '<input type="button" value="View Detail" class="btn btn-primary">') ?></p></td>
 				</tr>
 				<?php

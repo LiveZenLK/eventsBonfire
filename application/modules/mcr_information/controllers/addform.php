@@ -101,6 +101,13 @@ class addform extends Admin_Controller
                     $customerlist[$customer->id]=$customer;
                 }
 				
+				
+				$fpsetarr = array();
+				$fpsetlists = $this->load->model('fp_set_master/fp_set_master_model')->select('id,setType')->find_all();
+				 foreach($fpsetlists as $fplist)
+				 {
+				 	$fpsetarr[$fplist->id] = $fplist;
+				 }	
       //======================================= Pagination ===============================================
 				
 			$this -> load -> library('pagination');
@@ -123,6 +130,7 @@ class addform extends Admin_Controller
       //======================================= Pagination ===============================================
 				
 		Template::set('customers', $customerlist);
+		Template::set('fpsets', $fpsetarr);
         Template::set('userslist', $userlist);
 		Template::set('toolbar_title', 'Manage MCR Information');
 		Template::render();
