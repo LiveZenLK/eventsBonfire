@@ -487,6 +487,8 @@ class Users extends Front_Controller
 
 				if (isset($_POST['username']))
 				{
+					echo "hi";
+					die();
 					$data['username'] = $this->input->post('username');
 				}
 
