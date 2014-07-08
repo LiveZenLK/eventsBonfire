@@ -16,6 +16,7 @@ class issueset extends Admin_Controller
 		
 			Assets::add_css('flick/jquery-ui-1.8.13.custom.css');
 			Assets::add_js('jquery-ui-1.8.13.min.js');
+			Assets::add_js('select2.min.js');
 		Template::set_block('sub_nav', 'issueset/_sub_nav');
 
 		Assets::add_module_js('issue_mobile', 'issue_mobile.js');
@@ -80,12 +81,23 @@ class issueset extends Admin_Controller
 			
 			else if ($_POST['searchType'] == 'imeino') 
 			 {
+			 	
 				$query = '
 				select bf_issue_mobile.*
 				from bf_issue_mobile inner join bf_mobile
 				on bf_issue_mobile.parentMobile = bf_mobile.id
 				where bf_mobile.imeiNumber like "%' . $_POST['searchString'] . '%" and bf_issue_mobile.`status`="Issue";
 				';
+				$results = $this -> db -> query($query);
+				$records = $results -> result();
+			 } 
+			else if ($_POST['searchType'] == 'phoneno') 
+			 {
+				$query = '
+				select bf_issue_mobile.*
+				from bf_issue_mobile inner join bf_sim_info
+				on bf_issue_mobile.parentSim = bf_sim_info.id
+				where bf_sim_info.telephoneNumber like "%' . $_POST['searchString'] . '%" and bf_issue_mobile.status="Issue";';
 				$results = $this -> db -> query($query);
 				$records = $results -> result();
 			 } 
@@ -492,6 +504,17 @@ class issueset extends Admin_Controller
 				$records = $results -> result();
 			 } 
 			
+			else if ($_POST['searchType'] == 'phoneno') 
+			 {
+				$query = '
+				select bf_issue_mobile.*
+				from bf_issue_mobile inner join bf_sim_info
+				on bf_issue_mobile.parentSim = bf_sim_info.id
+				where bf_sim_info.telephoneNumber like "%' . $_POST['searchString'] . '%" and bf_issue_mobile.status="Issue";';
+				$results = $this -> db -> query($query);
+				$records = $results -> result();
+			 } 
+
 			else 
 			 {
 				$records = $this -> issue_mobile_model -> find_all_by("status", "Return");

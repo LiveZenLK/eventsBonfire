@@ -12,14 +12,15 @@ $has_records	= isset($records) && is_array($records) && count($records);
 	<?php echo form_open($this->uri->uri_string(),array('class'=>'form-wrapper cf', 'id'=>'search_form')); ?>
 				<div>
 					<input type="hidden" name="search" value="">
-					<select name="searchType" required class="customselect">
+					<select name="searchType" class="customselect">
 					    <option value="">Select Search Type</option>
 					    <option value="name" <?php echo isset($_POST['searchType'])&& $_POST['searchType']=="name"?" selected='selected'":""?>>Search By Name</option>
 					    <option value="serialno" <?php echo isset($_POST['searchType'])&& $_POST['searchType']=="serialno"?"selected='selected'":""?>>Search BY Serial Number</option>
 					    <option value="imeino" <?php echo isset($_POST['searchType'])&& $_POST['searchType']=="imeino"?"selected='selected'":""?>>Search by IMEI Number</option>
+					    <option value="phoneno" <?php echo isset($_POST['searchType'])&& $_POST['searchType']=="phoneno"?"selected='selected'":""?>>Search by Phone Number</option>
 					</select>
 				</div>
-		        <input type="text" name="searchString" placeholder="Search here..." value="<?php echo isset($_POST['searchString'])?$_POST['searchString']:""?>" required>
+		        <input type="text" name="searchString" placeholder="Search here..." value="<?php echo isset($_POST['searchString'])?$_POST['searchString']:""?>">
 		        
 		        <button type="submit">Search</button>
 		    <?php echo form_close();?>
@@ -76,7 +77,7 @@ $has_records	= isset($records) && is_array($records) && count($records);
 						
 					<?php endif; ?>
 					<?php if($record->parentMobile) { ?>
-					<td><?php echo $mobilelist[$record->parentMobile]->articleDescription."(".$mobilelist[$record->parentMobile]->serialNumber.")" ?></td>
+					<td><?php echo $mobilelist[$record->parentMobile]->articleDescription."(".$mobilelist[$record->parentMobile]->imeiNumber.")" ?></td>
 					<?php } else {?>
 					<td>Mobile Not Issue</td>	
 					<?php } ?>	

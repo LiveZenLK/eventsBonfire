@@ -15,6 +15,7 @@ class issueset extends Admin_Controller
 		
 			Assets::add_css('flick/jquery-ui-1.8.13.custom.css');
 			Assets::add_js('jquery-ui-1.8.13.min.js');
+			Assets::add_js('select2.min.js');
 		Template::set_block('sub_nav', 'issueset/_sub_nav');
 
 		Assets::add_module_js('issue_umts_mobile', 'issue_umts_mobile.js');

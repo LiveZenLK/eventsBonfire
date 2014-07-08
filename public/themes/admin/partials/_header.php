@@ -2,6 +2,7 @@
 	Assets::add_css( array(
 		'bootstrap.css',
 		'bootstrap-responsive.css',
+		'select2-bootstrap.css',
 	));
 
 	if (isset($shortcut_data) && is_array($shortcut_data['shortcut_keys'])) {

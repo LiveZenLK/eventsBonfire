@@ -43,7 +43,7 @@ $id = isset($issue_umts_mobile['id']) ? $issue_umts_mobile['id'] : '';
 			<div class="control-group <?php echo form_error('issue_umts_mobile_parentMobile') ? 'error' : ''; ?>">
 			<?php echo form_label('Mobile'. lang('bf_form_label_required'), 'issue_umts_mobile_parentMobile', array('class' => 'control-label') ); ?>	
                 <div class='controls'>
-					<select id="issue_umts_mobile_parentMobile" name="issue_umts_mobile_parentMobile">
+					<select id="issue_umts_mobile_parentMobile" name="issue_umts_mobile_parentMobile" style="width:220px;">
                         <option value="">--Select UMTS Stick--</option>
 	                        <?php
 	                        foreach ($mobiles as $mobile):
@@ -59,7 +59,7 @@ $id = isset($issue_umts_mobile['id']) ? $issue_umts_mobile['id'] : '';
 			<div class="control-group <?php echo form_error('issue_umts_mobile_parentSim') ? 'error' : ''; ?>">
 			<?php echo form_label('Sim'. lang('bf_form_label_required'), 'issue_umts_mobile_parentSim', array('class' => 'control-label') ); ?>	
                 <div class='controls'>
-					<select id="issue_umts_mobile_parentSim" name="issue_umts_mobile_parentSim">
+					<select id="issue_umts_mobile_parentSim" name="issue_umts_mobile_parentSim" style="width:220px;">
                         <option value="">--Select Sim--</option>
                         <?php
                         foreach ($sims as $sim):
@@ -154,3 +154,9 @@ $id = isset($issue_umts_mobile['id']) ? $issue_umts_mobile['id'] : '';
 		</fieldset>
     <?php echo form_close(); ?>
 </div>
+<?php 
+Assets::add_js('
+$("#issue_umts_mobile_parentMobile").select2();
+$("#issue_umts_mobile_parentSim").select2();
+',"inline")
+?>

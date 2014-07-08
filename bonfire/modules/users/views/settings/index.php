@@ -51,9 +51,9 @@ echo form_open();
 			<tr>
 				<th class="column-check"><input class="check-all" type="checkbox" /></th>
 				<th class='id'><?php echo lang('bf_id'); ?></th>
-				<th><?php echo lang('bf_email'); ?></th>
-				<th><?php echo lang('bf_username'); ?></th>
 				<th><?php echo lang('bf_display_name'); ?></th>
+				<th><?php echo lang('bf_username'); ?></th>
+				<th><?php echo lang('bf_email'); ?></th>
 				<th><?php echo lang('us_role'); ?></th>
 				<th class='last-login'><?php echo lang('us_last_login'); ?></th>
 				<th class='status'><?php echo lang('us_status'); ?></th>

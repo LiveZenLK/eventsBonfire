@@ -25,7 +25,7 @@ $id = isset($issue_mobile['id']) ? $issue_mobile['id'] : '';
 			<div class="control-group <?php echo form_error('issue_mobile_parentCustomer') ? 'error' : ''; ?>">
 			 <?php echo form_label('Customer Name'. lang('bf_form_label_required'), 'issue_mobile_parentCustomer', array('class' => 'control-label') ); ?>	
                  <div class='controls'>
-					<select id="issue_mobile_parentCustomer" name="issue_mobile_parentCustomer">
+					<select id="issue_mobile_parentCustomer" name="issue_mobile_parentCustomer" >
                         <option value="">--Select Customer--</option>
                         <?php
                         foreach ($users as $user):
@@ -36,24 +36,25 @@ $id = isset($issue_mobile['id']) ? $issue_mobile['id'] : '';
              	 </div>
 			 </div>
 
+
 			<div class="control-group <?php echo form_error('issue_mobile_parentMobile') ? 'error' : ''; ?>">
 			<?php echo form_label('Mobile', 'issue_mobile_parentMobile', array('class' => 'control-label') ); ?>	
               <div class='controls'>
-				<select id="issue_mobile_parentMobile" name="issue_mobile_parentMobile">
-	                <option value="">--Select Mobile--</option>
+				<select id="issue_mobile_parentMobile" name="issue_mobile_parentMobile" style="width:220px;">
+					 <option value="">--Select Mobile--</option>
 	                <?php
 	                foreach ($mobiles as $mobile):
 	                ?>
 	               <option value="<?php echo $mobile->id?>"  <?php echo set_value('issue_mobile_parentMobile')==$mobile->id?'selected':''; ?> ><?php echo $mobile->articleDescription."(".$mobile->imeiNumber.")" ?></option>
 	               <?php endforeach;?>
-               </select>	
+                </select>	
               </div>
 			</div>
 
 			<div class="control-group <?php echo form_error('issue_mobile_parentSim') ? 'error' : ''; ?>">
 			<?php echo form_label('Sim', 'issue_mobile_parentSim', array('class' => 'control-label') ); ?>	
               <div class='controls'>
-				<select id="issue_mobile_parentSim" name="issue_mobile_parentSim">
+				<select id="issue_mobile_parentSim" name="issue_mobile_parentSim" style="width:220px;">
                     <option value="">--Select SIM--</option>
                     <?php
                     foreach ($sims as $sim):
@@ -142,3 +143,9 @@ $id = isset($issue_mobile['id']) ? $issue_mobile['id'] : '';
 		</fieldset>
     <?php echo form_close(); ?>
 </div>
+<?php 
+Assets::add_js('
+$("#issue_mobile_parentMobile").select2();
+$("#issue_mobile_parentSim").select2();
+',"inline")
+?>
