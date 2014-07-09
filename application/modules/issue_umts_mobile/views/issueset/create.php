@@ -131,6 +131,8 @@ $id = isset($issue_umts_mobile['id']) ? $issue_umts_mobile['id'] : '';
 				</div>
 			</div>
 
+
+			<!-- 
 			<div class="control-group <?php echo form_error('issue_umts_mobile_parentAdmin') ? 'error' : ''; ?>">
 			<?php echo form_label('Issued By'. lang('bf_form_label_required'), 'issue_umts_mobile_parentAdmin', array('class' => 'control-label') ); ?>	
                 <div class='controls'>
@@ -144,7 +146,7 @@ $id = isset($issue_umts_mobile['id']) ? $issue_umts_mobile['id'] : '';
                     </select>	
                 </div>
 			</div>
-
+			-->
 			<div class="form-actions">
 				<input type="submit" name="save" class="btn btn-primary" value="<?php echo lang('issue_umts_mobile_action_create'); ?>"  />
 				<?php echo lang('bf_or'); ?>

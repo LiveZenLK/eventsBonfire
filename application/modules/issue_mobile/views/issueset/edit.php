@@ -154,6 +154,8 @@ $usb = $issue_mobile['usbCable'];
 				</div>
 			</div>
 
+
+			<!--
 			<div class="control-group <?php echo form_error('issue_mobile_issueBy') ? 'error' : ''; ?>">
 			<?php echo form_label('Issued By'. lang('bf_form_label_required'), 'issue_mobile_issueBy', array('class' => 'control-label') ); ?>	
                             <div class='controls'>
@@ -172,6 +174,8 @@ $usb = $issue_mobile['usbCable'];
                                 </select>	
                             </div>
 			</div>
+			-->
+			
 			<div class="form-actions">
 				<input type="submit" name="save" class="btn btn-primary" value="<?php echo lang('issue_mobile_action_edit'); ?>"  />
 				<?php echo lang('bf_or'); ?>

@@ -19,12 +19,13 @@ class managemobile extends Admin_Controller
 		Template::set_block('sub_nav', 'managemobile/_sub_nav');
 
 		Assets::add_module_js('mobile', 'mobile.js');
+		Assets::add_module_css('mobile', 'table.css');
 	}
 
 	//--------------------------------------------------------------------
 
 
-	public function index()
+	public function index($offset = 0)
 	{
 
 		// Deleting anything?
@@ -51,12 +52,45 @@ class managemobile extends Admin_Controller
 			}
 		}
 
-		$records = "SELECT * FROM bf_mobile WHERE bf_mobile.id NOT IN(select bf_mobile.id from bf_mobile where bf_mobile.deleted=1)";
-		$List = $this->db->query($records);
-		
-		//$records = $this->mobile_model->find_all();
 
-		Template::set('records', $List->result());
+		if (isset($_POST['search'])) 
+			{
+				if ($_POST['searchType'] == 'imei') 
+					{
+						$like_mobile = "%" . $_POST['searchString'] . "%";
+						$this -> mobile_model -> where("imeiNumber like ", $like_mobile);
+						$this -> mobile_model -> where("deleted", 0);
+						$records = $this -> mobile_model -> find_all();
+					} 
+				else 
+					{
+						$records = $this -> mobile_model -> find_all_by("deleted", 0);
+					}
+			} 
+		else 
+			{
+				$records = $this -> mobile_model -> find_all_by("deleted", 0);
+			}
+
+		$this->load->library('pagination');
+		$total_users = count($records);
+		$config['base_url'] = site_url(SITE_AREA ."/managemobile/mobile/index/");
+		$config['total_rows'] = $total_users;
+		$config['per_page'] = $this->limit;
+		$config['uri_segment'] = 5;	
+		$this->pagination->initialize($config);
+		
+		if ($records) 
+		{
+			Template::set('records', array_splice($records, $offset, $this -> limit));
+		} 
+		else 
+		{
+			Template::set('records', $records);
+		} 
+			
+			
+		Template::set('index_url', site_url(SITE_AREA .'/managemobile/mobile/index/') .'/');
 		Template::set('toolbar_title', 'Manage Mobile');
 		Template::render();
 	}

@@ -314,7 +314,7 @@ class issueset extends Admin_Controller
 		$data['usbCable']        = null;
 		$data['issueDate']        = $this->input->post('issue_umts_mobile_issueDate') ? $this->input->post('issue_umts_mobile_issueDate') : '0000-00-00';
 		$data['returnDate']        = $this->input->post('issue_umts_mobile_returnDate') ? $this->input->post('issue_umts_mobile_returnDate') : '0000-00-00';
-		$data['parentAdmin']        = $this->input->post('issue_umts_mobile_parentAdmin');
+		$data['parentAdmin']        = $this->current_user->id;
 
 		if ($type == 'insert')
 		{

@@ -356,7 +356,7 @@ class issueset extends Admin_Controller
 		$data['usbCable']        = $this->input->post('issue_mobile_usbCable');
 		$data['issueDate']        = $this->input->post('issue_mobile_issueDate') ? $this->input->post('issue_mobile_issueDate') : '0000-00-00';
 		$data['returnDate']        = $this->input->post('issue_mobile_returnDate') ? $this->input->post('issue_mobile_returnDate') : '0000-00-00';
-		$data['issueBy']        = $this->input->post('issue_mobile_issueBy');
+		$data['issueBy']        = $this->current_user->id;
 
 		if ($type == 'insert')
 		{

@@ -152,6 +152,8 @@ $usb = $issue_umts_mobile['usbCable'];
 				</div>
 			</div>
 
+
+			<!-- 
 			<div class="control-group <?php echo form_error('issue_umts_mobile_parentAdmin') ? 'error' : ''; ?>">
 			<?php echo form_label('Issued By'. lang('bf_form_label_required'), 'issue_umts_mobile_parentAdmin', array('class' => 'control-label') ); ?>	
                             <div class='controls'>
@@ -170,6 +172,7 @@ $usb = $issue_umts_mobile['usbCable'];
                                 </select>	
                             </div>
 			</div>
+			-->
 
 			<div class="form-actions">
 				<input type="submit" name="save" class="btn btn-primary" value="<?php echo lang('issue_umts_mobile_action_edit'); ?>"  />

@@ -25,6 +25,7 @@ class managemobile extends Admin_Controller
 		Template::set_block('sub_nav', 'managemobile/_sub_nav');
 
 		Assets::add_module_js('umts_stick', 'umts_stick.js');
+		Assets::add_module_css('umts_stick', 'table.css');
 	}
 
 	//--------------------------------------------------------------------
@@ -35,7 +36,7 @@ class managemobile extends Admin_Controller
 	 *
 	 * @return void
 	 */
-	public function index()
+	public function index($offset = 0)
 	{
 
 		// Deleting anything?
@@ -61,13 +62,46 @@ class managemobile extends Admin_Controller
 				}
 			}
 		}
-		
-		$records = "SELECT * FROM bf_umts_stick WHERE bf_umts_stick.id NOT IN(select bf_umts_stick.id from bf_umts_stick where bf_umts_stick.deleted=1)";
-		$List = $this->db->query($records);
-		
-		//$records = $this->umts_stick_model->find_all();
 
-		Template::set('records', $List->result());
+
+		if (isset($_POST['search'])) 
+			{
+				if ($_POST['searchType'] == 'imeino') 
+					{
+						$like_umts_stick = "%" . $_POST['searchString'] . "%";
+						$this -> umts_stick_model -> where("imeiNumber like ", $like_umts_stick);
+						$this -> umts_stick_model -> where("deleted", 0);
+						$records = $this -> umts_stick_model -> find_all();
+					} 
+				else 
+					{
+						$records = $this -> umts_stick_model -> find_all_by("deleted", 0);
+					}
+			} 
+		else 
+			{
+				$records = $this -> umts_stick_model -> find_all_by("deleted", 0);
+			}
+
+		$this->load->library('pagination');
+		$total_users = count($records);
+		$config['base_url'] = site_url(SITE_AREA ."/managemobile/umts_stick/index/");
+		$config['total_rows'] = $total_users;
+		$config['per_page'] = $this->limit;
+		$config['uri_segment'] = 5;	
+		$this->pagination->initialize($config);
+		
+		if ($records) 
+		{
+			Template::set('records', array_splice($records, $offset, $this -> limit));
+		} 
+		else 
+		{
+			Template::set('records', $records);
+		} 
+			
+			
+		Template::set('index_url', site_url(SITE_AREA .'/managemobile/umts_stick/index/') .'/');
 		Template::set('toolbar_title', 'Manage UMTS Stick');
 		Template::render();
 	}

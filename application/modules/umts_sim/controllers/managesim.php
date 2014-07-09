@@ -25,6 +25,7 @@ class managesim extends Admin_Controller
 		Template::set_block('sub_nav', 'managesim/_sub_nav');
 
 		Assets::add_module_js('umts_sim', 'umts_sim.js');
+		Assets::add_module_css('umts_sim', 'table.css');
 	}
 
 	//--------------------------------------------------------------------
@@ -35,7 +36,7 @@ class managesim extends Admin_Controller
 	 *
 	 * @return void
 	 */
-	public function index()
+	public function index($offset = 0)
 	{
 
 		// Deleting anything?
@@ -61,14 +62,44 @@ class managesim extends Admin_Controller
 				}
 			}
 		}
-
-		$records = "SELECT * FROM bf_umts_sim WHERE bf_umts_sim.id NOT IN(select bf_umts_sim.id from bf_umts_sim where bf_umts_sim.deleted=1)";
-		$List = $this->db->query($records);
 		
-		//Template::set('records', $List->result());
-		//$records = $this->umts_sim_model->find_all();
-
-		Template::set('records', $List->result());
+		if (isset($_POST['search'])) 
+			{
+				if ($_POST['searchType'] == 'phoneno') 
+					{
+						$like_phone = "%" . $_POST['searchString'] . "%";
+						$this -> umts_sim_model -> where("telephoneNumber like ", $like_phone);
+						$this -> umts_sim_model -> where("deleted", 0);
+						$records = $this -> umts_sim_model -> find_all();
+					} 
+				else 
+					{
+						$records = $this -> umts_sim_model -> find_all_by("deleted", 0);
+					}
+			} 
+		else 
+			{
+				$records = $this -> umts_sim_model -> find_all_by("deleted", 0);
+			}
+		
+		$this->load->library('pagination');
+		$total_users = count($records);
+		$config['base_url'] = site_url(SITE_AREA ."/managesim/umts_sim/index/");
+		$config['total_rows'] = $total_users;
+		$config['per_page'] = $this->limit;
+		$config['uri_segment'] = 5;	
+		$this->pagination->initialize($config);
+		
+		if ($records) 
+		{
+			Template::set('records', array_splice($records, $offset, $this -> limit));
+		} 
+		else 
+		{
+			Template::set('records', $records);
+		} 
+		
+		Template::set('index_url', site_url(SITE_AREA .'/managesim/umts_sim/index/') .'/');
 		Template::set('toolbar_title', 'Manage UMTS SIM');
 		Template::render();
 	}

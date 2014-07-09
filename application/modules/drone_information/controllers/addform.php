@@ -28,44 +28,56 @@ class addform extends Admin_Controller {
 	public function index($offset = 0) {
 
 		// Deleting anything?
-		if (isset($_POST['delete'])) {
-			$checked = $this -> input -> post('checked');
-
-			if (is_array($checked) && count($checked)) {
-				$result = FALSE;
-				foreach ($checked as $pid) {
-					$result = $this -> drone_information_model -> delete($pid);
-				}
-
-				if ($result) {
-					Template::set_message(count($checked) . ' ' . lang('drone_information_delete_success'), 'success');
-				} else {
-					Template::set_message(lang('drone_information_delete_failure') . $this -> drone_information_model -> error, 'error');
+		if (isset($_POST['delete'])) 
+			{
+				$checked = $this -> input -> post('checked');
+	
+				if (is_array($checked) && count($checked)) 
+				{
+					$result = FALSE;
+					foreach ($checked as $pid) {
+						$result = $this -> drone_information_model -> delete($pid);
+					}
+	
+					if ($result) {
+						Template::set_message(count($checked) . ' ' . lang('drone_information_delete_success'), 'success');
+					} else {
+						Template::set_message(lang('drone_information_delete_failure') . $this -> drone_information_model -> error, 'error');
+					}
 				}
 			}
-		}
 
-		if (isset($_POST['search'])) {
-			if ($_POST['searchType'] == 'job') {
-				$like_job = "%" . $_POST['searchString'] . "%";
-				$this -> drone_information_model -> where("job like ", $like_job);
-				$this -> drone_information_model -> where("status", "Issue");
-				$records = $this -> drone_information_model -> find_all();
-			} elseif ($_POST['searchType'] == 'name') {
-				$query = '
-				select bf_drone_information.*
-				from bf_drone_information inner join bf_add_customer
-				on bf_drone_information.drone_customer = bf_add_customer.id
-				where bf_add_customer.name like "%' . $_POST['searchString'] . '%" and bf_drone_information.`status`="Issue";
-				';
-				$results = $this -> db -> query($query);
-				$records = $results -> result();
-			} else {
+		if (isset($_POST['search'])) 
+			{
+				if ($_POST['searchType'] == 'job') 
+					{
+						$like_job = "%" . $_POST['searchString'] . "%";
+						$this -> drone_information_model -> where("job like ", $like_job);
+						$this -> drone_information_model -> where("status", "Issue");
+						$records = $this -> drone_information_model -> find_all();
+					} 
+				elseif ($_POST['searchType'] == 'name') 
+					{
+						$query = '
+						select bf_drone_information.*
+						from bf_drone_information inner join bf_add_customer
+						on bf_drone_information.drone_customer = bf_add_customer.id
+						where bf_add_customer.name like "%' . $_POST['searchString'] . '%" and bf_drone_information.`status`="Issue";
+						';
+						$results = $this -> db -> query($query);
+						$records = $results -> result();
+					} 
+				else 
+					{
+						$records = $this -> drone_information_model -> find_all_by("status", "Issue");
+					}
+			} 
+		else 
+			{
 				$records = $this -> drone_information_model -> find_all_by("status", "Issue");
 			}
-		} else {
-			$records = $this -> drone_information_model -> find_all_by("status", "Issue");
-		}
+		
+		
 		$userlist = array();
 		$users = $this -> user_model -> find_all();
 		foreach ($users as $user) {
@@ -77,6 +89,8 @@ class addform extends Admin_Controller {
 			$customerlist[$customer -> id] = $customer;
 		}
 
+
+		// Pagination
 		$this -> load -> library('pagination');
 		$total_users = count($records);
 		$config['base_url'] = site_url(SITE_AREA . "/addform/drone_information/index/");
@@ -87,13 +101,16 @@ class addform extends Admin_Controller {
 
 		Template::set('userslist', $userlist);
 		Template::set('customers', $customerlist);
-		if ($records) {
-			Template::set('records', array_splice($records, $offset, $this -> limit));
-		} else {
-			Template::set('records', $records);
-		}
+		if ($records) 
+			{
+				Template::set('records', array_splice($records, $offset, $this -> limit));
+			} 
+		else 
+			{
+				Template::set('records', $records);
+			}
+			
 		Template::set('index_url', site_url(SITE_AREA . '/addform/drone_information/index/') . '/');
-
 		Template::set('toolbar_title', 'Manage Drone Information');
 		Template::render();
 	}

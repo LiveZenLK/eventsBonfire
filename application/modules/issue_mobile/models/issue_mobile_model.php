@@ -89,7 +89,7 @@ class Issue_mobile_model extends BF_Model {
 		array(
 			"field"		=> "issue_mobile_issueBy",
 			"label"		=> "Issued By",
-			"rules"		=> "required|max_length[200]"
+			"rules"		=> "max_length[200]"
 		),
 	);
 	protected $insert_validation_rules 	= array();

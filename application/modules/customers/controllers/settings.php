@@ -25,6 +25,7 @@ class settings extends Admin_Controller
 		Template::set_block('sub_nav', 'settings/_sub_nav');
 
 		Assets::add_module_js('customers', 'customers.js');
+		Assets::add_module_css('customers', 'table.css');
 	}
 
 	//--------------------------------------------------------------------
@@ -61,28 +62,52 @@ class settings extends Admin_Controller
 				}
 			}
 		}
+		
+		
+		if (isset($_POST['search'])) 
+			{
+				if ($_POST['searchString']) 
+					{
+						$like_name = "%" . $_POST['searchString'] . "%";
+						$this -> customers_model -> where("name like ", $like_name);
+						$this -> customers_model -> where("deleted", 0);
+						$records = $this -> customers_model -> find_all();
+					} 
+				else 
+					{
+						$records = $this -> customers_model -> find_all_by("deleted", 0);
+					}
+			} 
+			
+		else 
+			{
+				$records = $this -> customers_model -> find_all_by("deleted", 0);
+			}
 
-		$records = "SELECT * FROM bf_customers WHERE bf_customers.id NOT IN(select bf_customers.id from bf_customers where bf_customers.deleted=1) LIMIT ".$this->limit." OFFSET ".$offset."";
-		$List = $this->db->query($records);
-		Template::set('records', $List->result());
-		$List = $this->db->query($records);
-		Template::set('records', $List->result());
 		
 		// ====================== Pagination =====================================================
 		
 		$this->load->library('pagination');
 	
-			$total_users = $this->customers_model->count_all();
+			$total_users = count($records);
 			$config['base_url'] = site_url(SITE_AREA ."/settings/customers/index/");
 			$config['total_rows'] = $total_users;
 			$config['per_page'] = $this->limit;
 			$config['uri_segment']	= 5;
-	
 			$this->pagination->initialize($config);
-			Template::set('index_url', site_url(SITE_AREA .'/settings/customers/index/') .'/');
+			
 		
+			if ($records) 
+			{
+				Template::set('records', array_splice($records, $offset, $this -> limit));
+			} 
+			else 
+			{
+				Template::set('records', $records);
+			} 
 		// ====================== Pagination =====================================================
 		
+		Template::set('index_url', site_url(SITE_AREA .'/settings/customers/index/') .'/');
 		Template::set('toolbar_title', 'Manage Customers');
 		Template::render();
 	}

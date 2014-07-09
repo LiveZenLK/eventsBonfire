@@ -16,6 +16,7 @@ class maangecustomers extends Admin_Controller
 		Template::set_block('sub_nav', 'maangecustomers/_sub_nav');
 
 		Assets::add_module_js('add_customer', 'add_customer.js');
+		Assets::add_module_css('add_customer', 'table.css');
 	}
 
 	//--------------------------------------------------------------------
@@ -47,23 +48,49 @@ class maangecustomers extends Admin_Controller
 			}
 		}
 		
+		
+		if (isset($_POST['search'])) 
+			{
+				if ($_POST['searchString']) 
+					{
+						$like_name = "%" . $_POST['searchString'] . "%";
+						$this -> add_customer_model -> where("name like ", $like_name);
+						$this -> add_customer_model -> where("deleted", 0);
+						$records = $this -> add_customer_model -> find_all();
+					} 
+				else 
+					{
+						$records = $this -> add_customer_model -> find_all_by("deleted", 0);
+					}
+			} 
+			
+		else 
+			{
+				$records = $this -> add_customer_model -> find_all_by("deleted", 0);
+			}
 		//===========================Pagination===============================================================
 		
-			$records = "SELECT * FROM bf_add_customer WHERE bf_add_customer.id NOT IN(select bf_add_customer.id from bf_add_customer where bf_add_customer.deleted=1) LIMIT ".$this->limit." OFFSET ".$offset."";
-			$List = $this->db->query($records);
-			Template::set('records', $List->result());
 		
 			$this->load->library('pagination');
 	
-			$total_users = $this->add_customer_model->count_all();
+			$total_users = count($records);
 			$config['base_url'] = site_url(SITE_AREA ."/maangecustomers/add_customer/index/");
 			$config['total_rows'] = $total_users;
 			$config['per_page'] = $this->limit;
 			$config['uri_segment']	= 5;
 	
 			$this->pagination->initialize($config);
+			
+			if ($records) 
+			{
+				Template::set('records', array_splice($records, $offset, $this -> limit));
+			} 
+			else 
+			{
+				Template::set('records', $records);
+			} 
+			
 			Template::set('index_url', site_url(SITE_AREA .'/maangecustomers/add_customer/index/') .'/');
-		
 			Template::set('toolbar_title', 'Manage Add Customer');
 			Template::render();
 	}

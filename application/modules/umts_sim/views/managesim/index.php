@@ -8,6 +8,22 @@ $has_records	= isset($records) && is_array($records) && count($records);
 ?>
 <div class="admin-box">
 	<h3>UMTS SIM</h3>
+	
+	<?php echo form_open($this->uri->uri_string(),array('class'=>'form-wrapper cf', 'id'=>'search_form')); ?>
+				<div>
+					<input type="hidden" name="search" value="">
+					<select name="searchType" class="customselect">
+					    <option value="">Select Search Type</option>
+					    <option value="phoneno" <?php echo isset($_POST['searchType'])&& $_POST['searchType']=="phoneno"?" selected='selected'":""?>>Search By Telephone No</option>
+					</select>
+				</div>
+		        <input type="text" name="searchString" placeholder="Search here..." value="<?php echo isset($_POST['searchString'])?$_POST['searchString']:""?>">
+		        
+		        <button type="submit">Search</button>
+		    <?php echo form_close();?>
+
+   <br /><br />
+   
 	<?php echo form_open($this->uri->uri_string()); ?>
 		<table class="table table-bordered">
 			<thead>
@@ -71,5 +87,17 @@ $has_records	= isset($records) && is_array($records) && count($records);
 				<?php endif; ?>
 			</tbody>
 		</table>
-	<?php echo form_close(); ?>
+	<?php echo form_close(); 
+	echo $this->pagination->create_links();
+	?>
 </div>
+<?php 
+Assets::add_js('
+$(".pagination a").click(function(e){
+		e.preventDefault();
+		$("#search_form").attr("action", $(this).attr("href"));
+		$("#search_form").submit();
+		return;
+});
+',"inline")
+?>

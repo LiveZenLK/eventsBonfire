@@ -120,19 +120,18 @@ $id = isset($issue_mobile['id']) ? $issue_mobile['id'] : '';
 				</div>
 			</div>
 
+
+			<!--
 			<div class="control-group <?php echo form_error('issue_mobile_issueBy') ? 'error' : ''; ?>">
 			  <?php echo form_label('Issued By'. lang('bf_form_label_required'), 'issue_mobile_issueBy', array('class' => 'control-label') ); ?>	
                 <div class='controls'>
 				<select id="issue_mobile_issueBy" name="issue_mobile_issueBy">
                     <option value="">--Issued By--</option>
-                    <?php
-                    foreach ($admins as $admin):
-                    ?>
-                   <option value="<?php echo $admin->id?>" <?php echo set_value('issue_mobile_issueBy')==$admin->id?'selected':''; ?> ><?php echo $admin->username?></option>
-                   <?php endforeach;?>
+                   <option value="<?php $this->current_user->id;?>"  ><?php echo $this->current_user->username;?></option>
                 </select>	
                 </div>
 			</div>
+			-->
 
 			<div class="form-actions">
 				<input type="submit" name="save" class="btn btn-primary" value="<?php echo lang('issue_mobile_action_create'); ?>"  />

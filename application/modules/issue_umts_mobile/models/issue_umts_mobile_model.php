@@ -90,7 +90,7 @@ class Issue_umts_mobile_model extends BF_Model {
 		array(
 			"field"		=> "issue_umts_mobile_parentAdmin",
 			"label"		=> "Issued By",
-			"rules"		=> "required|max_length[300]"
+			"rules"		=> "max_length[300]"
 		),
 	);
 	protected $insert_validation_rules 	= array();

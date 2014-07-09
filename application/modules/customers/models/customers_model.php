@@ -61,14 +61,10 @@ class Customers_model extends BF_Model {
 	protected $skip_validation 			= FALSE;
 
 	//--------------------------------------------------------------------
-	
+
 	public function count_all()
 	{
 			$this->db->where($this->table_name . '.deleted', 0);
-
-		return $this->db->count_all_results($this->table_name);
-
-	}//end count_all()
-	
-
+			return $this->db->count_all_results($this->table_name);
+	}//end count_all()	
 }

@@ -77,4 +77,9 @@ class Umts_stick_model extends BF_Model {
 
 	//--------------------------------------------------------------------
 
+	public function count_all()
+	{
+			$this->db->where($this->table_name . '.deleted', 0);
+			return $this->db->count_all_results($this->table_name);
+	}//end count_all()	
 }
