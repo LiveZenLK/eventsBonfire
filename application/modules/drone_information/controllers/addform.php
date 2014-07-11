@@ -16,6 +16,7 @@ class addform extends Admin_Controller {
 		Assets::add_css('flick/jquery-ui-1.8.13.custom.css');
 		Assets::add_js('jquery-ui-1.8.13.min.js');
 		Template::set_block('sub_nav', 'addform/_sub_nav');
+		Assets::add_js('select2.min.js');
 
 		Assets::add_module_js('drone_information', 'drone_information.js');
 		Assets::add_module_css('drone_information', 'style.css');

@@ -29,7 +29,7 @@ $id = isset($mcr_information['id']) ? $mcr_information['id'] : '';
                          <div class="control-group <?php echo form_error('mcr_information_parentCustomer') ? 'error' : ''; ?>">
                         <?php echo form_label('Customer Name'. lang('bf_form_label_required'), 'mcr_information_parentCustomer', array('class' => 'control-label') ); ?>	
                             <div class='controls'>
-                                <select id="mcr_information_parentCustomer" name="mcr_information_parentCustomer">
+                                <select id="mcr_information_parentCustomer" name="mcr_information_parentCustomer" style="width: 220px;">
                                     <option value="">--Select Customer--</option>
                                     <?php
                                     foreach ($users as $user):
@@ -119,7 +119,7 @@ $id = isset($mcr_information['id']) ? $mcr_information['id'] : '';
             	<div class="control-group <?php echo form_error('mcr_information_type') ? 'error' : ''; ?>">
                     <?php echo form_label('Set Type', '', array('class' => 'control-label', 'id' => 'mcr_information_type_label')); ?>
                     <div class='controls' aria-labelled-by='mcr_information_type_label'>
-                        <select name="mcr_information_type" id="mcr_information_type"  onchange="loadFpSet(this.value);">
+                        <select name="mcr_information_type" id="mcr_information_type"  onchange="loadFpSet(this.value);" style="width: 220px;">
                         	<option value="">Select Set Type</option>
                         	<?php foreach ($fpsets as $fpset) : ?>
                             <option value="<?php echo $fpset->id;?>" <?php echo set_value('mcr_information_type')==$fpset->id?'selected':''; ?>><?php echo $fpset->setType;?></option>
@@ -472,3 +472,9 @@ $id = isset($mcr_information['id']) ? $mcr_information['id'] : '';
 		}
 		</script>
 </div>
+<?php 
+Assets::add_js('
+$("#mcr_information_parentCustomer").select2();
+$("#mcr_information_type").select2();
+',"inline")
+?>

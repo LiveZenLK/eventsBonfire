@@ -25,7 +25,7 @@ $id = isset($issue_mobile['id']) ? $issue_mobile['id'] : '';
 			<div class="control-group <?php echo form_error('issue_mobile_parentCustomer') ? 'error' : ''; ?>">
 			 <?php echo form_label('Customer Name'. lang('bf_form_label_required'), 'issue_mobile_parentCustomer', array('class' => 'control-label') ); ?>	
                  <div class='controls'>
-					<select id="issue_mobile_parentCustomer" name="issue_mobile_parentCustomer" >
+					<select id="issue_mobile_parentCustomer" name="issue_mobile_parentCustomer" style="width:220px;">
                         <option value="">--Select Customer--</option>
                         <?php
                         foreach ($users as $user):
@@ -146,5 +146,6 @@ $id = isset($issue_mobile['id']) ? $issue_mobile['id'] : '';
 Assets::add_js('
 $("#issue_mobile_parentMobile").select2();
 $("#issue_mobile_parentSim").select2();
+$("#issue_mobile_parentCustomer").select2();
 ',"inline")
 ?>

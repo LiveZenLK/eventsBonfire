@@ -34,7 +34,6 @@ $usb = $issue_umts_mobile['usbCable'];
 			<?php echo form_label('Customer Name'. lang('bf_form_label_required'), 'issue_umts_mobile_parentCustomer', array('class' => 'control-label') ); ?>	
                 <div class='controls'>
 					<select id="issue_umts_mobile_parentCustomer" name="issue_umts_mobile_parentCustomer">
-						 <option value="">--Select Customer--</option>
                         <?php
                         foreach ($cutomers as $customer):
                         if($customer->id==$selectedCustomer){ ?>
@@ -50,7 +49,7 @@ $usb = $issue_umts_mobile['usbCable'];
 			<div class="control-group <?php echo form_error('issue_umts_mobile_parentMobile') ? 'error' : ''; ?>">
 			<?php echo form_label('Mobile'. lang('bf_form_label_required'), 'issue_umts_mobile_parentMobile', array('class' => 'control-label') ); ?>	
                             <div class='controls'>
-				<select id="issue_umts_mobile_parentMobile" name="issue_umts_mobile_parentMobile">
+				<select id="issue_umts_mobile_parentMobile" name="issue_umts_mobile_parentMobile" style="width:220px;">
 					 <option value="">--Select UMTS Stick--</option>
                                     
                                     <?php
@@ -70,7 +69,7 @@ $usb = $issue_umts_mobile['usbCable'];
 			<div class="control-group <?php echo form_error('issue_umts_mobile_parentSim') ? 'error' : ''; ?>">
 			  <?php echo form_label('Sim'. lang('bf_form_label_required'), 'issue_umts_mobile_parentSim', array('class' => 'control-label') ); ?>	
                     <div class='controls'>
-						<select id="issue_umts_mobile_parentSim" name="issue_umts_mobile_parentSim">
+						<select id="issue_umts_mobile_parentSim" name="issue_umts_mobile_parentSim" style="width:220px;">
 							<option value="">---Select Sim---</option>
                             <?php
                             foreach ($sims as $sim):
@@ -189,3 +188,9 @@ $usb = $issue_umts_mobile['usbCable'];
 		</fieldset>
     <?php echo form_close(); ?>
 </div>
+<?php 
+Assets::add_js('
+$("#issue_umts_mobile_parentMobile").select2();
+$("#issue_umts_mobile_parentSim").select2();
+',"inline")
+?>

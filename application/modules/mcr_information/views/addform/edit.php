@@ -140,7 +140,7 @@ $selectfpset = $mcr_information['type'];
                   	<div class="control-group <?php echo form_error('mcr_information_type') ? 'error' : ''; ?>">
                             <?php echo form_label('Set Type', '', array('class' => 'control-label', 'id' => 'mcr_information_type_label')); ?>
                             <div class='controls' aria-labelled-by='mcr_information_type_label'>
-                                <select name="mcr_information_type" id="mcr_information_type"  onchange="loadFpSet(this.value);">
+                                <select name="mcr_information_type" id="mcr_information_type"  onchange="loadFpSet(this.value);" style="width:220px;">
                                 	<option value="">Select Set Type</option>
                                 	<?php foreach ($fpsets as $fpset) :
 									if($fpset->id == $selectfpset) :
@@ -461,3 +461,9 @@ $selectfpset = $mcr_information['type'];
 		</fieldset>
     <?php echo form_close(); ?>
 </div>
+
+<?php 
+Assets::add_js('
+$("#mcr_information_type").select2();
+',"inline")
+?>

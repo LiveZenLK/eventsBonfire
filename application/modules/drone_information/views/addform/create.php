@@ -36,7 +36,7 @@ $id = isset($drone_information['id']) ? $drone_information['id'] : '';
                      -->
                     <?php echo form_label('Customer'. lang('bf_form_label_required'), 'drone_information_drone_customer', array('class' => 'control-label') ); ?>	
                         <div class='controls'>
-                            <select id="drone_information_drone_customer" name="drone_information_drone_customer">
+                            <select id="drone_information_drone_customer" name="drone_information_drone_customer" style="width:220px;">
                                 <option value="">--Select Customer--</option>
                                 <?php
                                 foreach ($customers as $customer):
@@ -125,7 +125,7 @@ $id = isset($drone_information['id']) ? $drone_information['id'] : '';
 						<div class="control-group <?php echo form_error('drone_set_type') ? 'error' : ''; ?>">
                             <?php echo form_label('Set Type' . lang('bf_form_label_required'), '', array('class' => 'control-label', 'id' => 'drone_information_drone_set_type_label')); ?>
                             <div class='controls' aria-labelled-by='drone_information_drone_set_type_label'>
-                                <select name="drone_information_drone_set_type" id="drone_information_drone_set_type" onchange="loadDrone(this.value);">
+                                <select name="drone_information_drone_set_type" id="drone_information_drone_set_type" onchange="loadDrone(this.value);" style="width:220px;">
                                 	<option value="">Select Set Type</option>
                                 	<?php foreach ($droneset as $drone) : ?>
                                     <option value="<?php echo $drone->id;?>" <?php echo set_value('drone_information_drone_set_type')==$drone->id?'selected':''; ?>><?php echo $drone->setType;?></option>
@@ -398,3 +398,9 @@ $id = isset($drone_information['id']) ? $drone_information['id'] : '';
 				}
 		</script>
 </div>
+<?php 
+Assets::add_js('
+$("#drone_information_drone_customer").select2();
+$("#drone_information_drone_set_type").select2();
+',"inline")
+?>
