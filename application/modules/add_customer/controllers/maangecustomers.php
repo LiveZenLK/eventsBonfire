@@ -20,10 +20,34 @@ class maangecustomers extends Admin_Controller
 	}
 
 	//--------------------------------------------------------------------
+	
+	public function sorting($Getorder = NULL)
+	{
+		$Getorder = $this->uri->segment(5);
+		if ($Getorder == NULL) {
+			$order = 'desc';
+		}
+		else {
+			$order = $Getorder;
+		}
+		
+		if($order == 'desc')
+			 {
+			  $order = 'asc'; 
+			 }
+			else {
+				$order = 'desc';
+			}
+			 
+		Template::set('order',$order); 
+		
+	}
 
+	//--------------------------------------------------------------------
+	
 	public function index($offset = 0)
 	{
-
+		
 		// Deleting anything?
 		if (isset($_POST['delete']))
 		{
@@ -56,6 +80,7 @@ class maangecustomers extends Admin_Controller
 						$like_name = "%" . $_POST['searchString'] . "%";
 						$this -> add_customer_model -> where("name like ", $like_name);
 						$this -> add_customer_model -> where("deleted", 0);
+						$this->add_customer_model->order_by("name","desc");
 						$records = $this -> add_customer_model -> find_all();
 					} 
 				else 
@@ -77,7 +102,7 @@ class maangecustomers extends Admin_Controller
 			$config['base_url'] = site_url(SITE_AREA ."/maangecustomers/add_customer/index/");
 			$config['total_rows'] = $total_users;
 			$config['per_page'] = $this->limit;
-			$config['uri_segment']	= 5;
+			$config['uri_segment']	= 6;
 	
 			$this->pagination->initialize($config);
 			

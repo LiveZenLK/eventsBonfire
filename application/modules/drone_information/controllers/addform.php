@@ -25,10 +25,11 @@ class addform extends Admin_Controller {
 	//--------------------------------------------------------------------
 
 	
-	
 	public function index($offset = 0) {
-
+		
+		
 		// Deleting anything?
+		
 		if (isset($_POST['delete'])) 
 			{
 				$checked = $this -> input -> post('checked');

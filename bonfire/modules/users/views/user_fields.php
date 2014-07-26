@@ -84,10 +84,5 @@ if (isset($languages) && is_array($languages) && count($languages)) :
     endif;
 endif;
 ?>
-<div class="control-group<?php echo iif(form_error('timezone'), $errorClass); ?>">
-    <label class="control-label required" for="timezones"><?php echo lang('bf_timezone'); ?></label>
-    <div class="controls">
-        <?php echo timezone_menu(set_value('timezones', isset($user) ? $user->timezone : $defaultTimezone), $controlClass); ?>
-        <span class="help-inline"><?php echo form_error('timezones'); ?></span>
-    </div>
-</div>
+
+<input type="hidden" name="timezones" value="UM6">

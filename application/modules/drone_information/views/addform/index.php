@@ -24,6 +24,7 @@ $has_records	= isset($records) && is_array($records) && count($records);
 		    <?php echo form_close();?>
 
    <br /><br />
+   
 	 <p><?php echo anchor(SITE_AREA . '/addform/drone_information/return_sets/' , '<input type="button" value="View Return Sets" class="btn btn-warning">') ?></p>
 	<?php echo form_open($this->uri->uri_string()); ?>
 		<table class="table table-bordered">
@@ -33,7 +34,7 @@ $has_records	= isset($records) && is_array($records) && count($records);
 					<th class="column-check"><input class="check-all" type="checkbox" /></th>
 					<?php endif;?>
 					
-					<th>Customer</th>
+					<th><a href="<?php echo site_url("/drone_information/addform/index/sorting")?>">Customer</a></th>
 					<th>Job</th>
 					<th>Issue Date</th>
 					<th>Return Date</th>

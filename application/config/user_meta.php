@@ -20,6 +20,8 @@
 //------------------------------------------------------------------------
 
 $config['user_meta_fields'] =  array(
+	
+	/*
 	array(
 		'name'   => 'street_name',
 		'label'   => lang('user_meta_street_name'),
@@ -69,6 +71,9 @@ $config['user_meta_fields'] =  array(
 		),
 	),
 
+	 * 
+	 * 
+	 */
 	array(
 		'name'   => 'type',
 		'label'   => lang('user_meta_type'),

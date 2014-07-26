@@ -284,7 +284,8 @@ class Settings extends Admin_Controller
 
 				// redirect back to the edit page to make sure that a users password change
 				// forces a login check
-				redirect($this->uri->uri_string());
+				redirect(SITE_AREA .'/settings/users');
+				//redirect($this->uri->uri_string());
 			}
 		}
 

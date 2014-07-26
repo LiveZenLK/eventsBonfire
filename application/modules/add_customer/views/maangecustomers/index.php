@@ -28,8 +28,7 @@ $has_records	= isset($records) && is_array($records) && count($records);
 					<?php if ($can_delete && $has_records) : ?>
 					<th class="column-check"><input class="check-all" type="checkbox" /></th>
 					<?php endif;?>
-					
-					<th>Name</th>
+					<th><a href="<?php echo site_url("admin/maangecustomers/add_customer/index");?>">Name</a></th>
 					<th>Custom Field</th>
 				</tr>
 			</thead>

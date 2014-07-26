@@ -38,3 +38,4 @@ $lang['drone_information_act_delete_record']	= 'Deleted record with ID';
 $lang['drone_information_column_created']	= 'Created';
 $lang['drone_information_column_deleted']	= 'Deleted';
 $lang['drone_information_column_modified']	= 'Modified';
+$lang['drone_information_sorting']	= 'Customer Name Start With';
